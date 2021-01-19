@@ -31,7 +31,7 @@ export class SignUpController implements Controller {
         return badRequest(new InvalidParamError('passwordConfirmation'))
       }
 
-      const response = await this.addAccount.add({ name, email, password, passwordConfirmation })
+      const response = await this.addAccount.add({ name, email, password })
 
       return ok(response)
     } catch (error) {
