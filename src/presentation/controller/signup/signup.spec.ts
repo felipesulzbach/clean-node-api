@@ -202,16 +202,13 @@ describe('presentation :: controller :: SignUpController', () => {
         expect(addSpy).toHaveBeenCalledWith({
             name: 'any',
             email: 'any@any.com',
-            password: 'any',
-            passwordConfirmation: 'any'
+            password: 'any'
         })
     })
 
     test('should return 500 if an AddAccount throws', async () => {
         const { sut, addAccountStub } = makeSut()
-        jest.spyOn(addAccountStub, 'add').mockImplementationOnce(async () => {
-            return new Promise((resolve, reject) => reject(new Error()))
-        })
+        jest.spyOn(addAccountStub, 'add').mockRejectedValueOnce(new Error())
         const httpRequest = {
             body: {
                 name: 'any',
