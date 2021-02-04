@@ -1,13 +1,23 @@
 import { MongoHelper } from "../helper/mongo-helper"
 import { AccountMongoRepository } from "./account"
 
+const makeFakeAccount = () => ({
+  name: 'any',
+  email: 'any@any.com',
+  password: 'any'
+})
+
+const makeSut = (): AccountMongoRepository => {
+  return new AccountMongoRepository()
+}
+
 describe('db :: mongodb :: accountrepository :: AccountMongoRepository', () => {
   beforeAll(async () => {
     await MongoHelper.connect(process.env.MONGO_URL)
   })
 
   beforeEach(async () => {
-    const accountCollection = MongoHelper.getCollection('account')
+    const accountCollection = await MongoHelper.getCollection('account')
     await accountCollection.deleteMany({})
   })
 
@@ -16,12 +26,8 @@ describe('db :: mongodb :: accountrepository :: AccountMongoRepository', () => {
   })
 
   test('should return an account on success', async () => {
-    const sut = new AccountMongoRepository()
-    const account = await sut.add({
-      name: 'any',
-      email: 'any@any.com',
-      password: 'any'
-    })
+    const sut = makeSut()
+    const account = await sut.add(makeFakeAccount())
     expect(account).toBeTruthy()
     expect(account.id).toBeTruthy()
     expect(account.name).toBe('any')
