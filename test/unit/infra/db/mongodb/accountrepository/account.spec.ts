@@ -1,5 +1,5 @@
-import { MongoHelper } from "../helper/mongo-helper"
-import { AccountMongoRepository } from "./account"
+import { MongoHelper } from "../../../../../../src/infra/db/mongodb/helper/mongo-helper"
+import { AccountMongoRepository } from "../../../../../../src/infra/db/mongodb/accountrepository/account"
 
 const makeFakeAccount = () => ({
   name: 'any',

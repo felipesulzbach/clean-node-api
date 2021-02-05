@@ -1,7 +1,7 @@
-import { LogErrorRepository } from "../../data/protocol/log-error-repository"
-import { ok, serverError } from "../../presentation/helper/http-helper"
-import { Controller, HttpRequest, HttpResponse } from "../../presentation/protocol"
-import { LogControllerDecorator } from "./log"
+import { LogErrorRepository } from "../../../../src/data/protocol/log-error-repository"
+import { ok, serverError } from "../../../../src/presentation/helper/http-helper"
+import { Controller, HttpRequest, HttpResponse } from "../../../../src/presentation/protocol"
+import { LogControllerDecorator } from "../../../../src/main/decorator/log"
 
 interface SutType {
   sut: LogControllerDecorator,
