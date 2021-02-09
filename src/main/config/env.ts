@@ -1,4 +1,14 @@
 export default {
   port: process.env.PORT || 5050,
-  mongoUrl: process.env.MONGO_URL || 'mongodb://localhost:27017/clean-node-api'
+  mongodb: {
+    dialect: 'mongodb://',
+    domain: 'localhost:27017',
+    namedb: 'clean-node-api',
+    username: 'mongo',
+    password: 'mongo123',
+    options: {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    }
+  }
 }
