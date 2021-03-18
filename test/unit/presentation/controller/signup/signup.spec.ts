@@ -6,7 +6,7 @@ import { ok, serverError, badRequest } from "../../../../../src/presentation/hel
 
 interface SutType {
     sut: SignUpController
-    emailValidatorStub: EmailValidator,
+    emailValidatorStub: EmailValidator
     addAccountStub: AddAccount
 }
 
